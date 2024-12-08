@@ -3,23 +3,23 @@
 #include<vector>
 using namespace std;
 
-vector<int> nge(vector<int> &arr){
+vector<int> nse(vector<int> &arr){
     int n = arr.size();
     vector<int> output(n, -1);
     stack<int> st; // index
     st.push(0);
     for(int i=1; i<n; i++){
-        while(!st.empty() && arr[i] > arr[st.top()]){
+        while(!st.empty() && arr[i] < arr[st.top()]){
             output[st.top()] = arr[i];
             st.pop();
         }
         st.push(i);
     }
-    // not mandatory
-    while(! st.empty()){
-        output[st.top()] = -1;
-        st.pop();
-    };
+
+    // while(! st.empty()){
+    //     output[st.top()] = -1;
+    //     st.pop();
+    // };
 
     return output;
 };
@@ -35,7 +35,7 @@ int main()
         cin>>x;
         v.push_back(x);
     }
-    vector<int> res = nge(v);
+    vector<int> res = nse(v);
     for(int i=0; i<res.size(); i++){
         cout<<res[i]<<" ";
     }
