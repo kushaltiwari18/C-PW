@@ -34,9 +34,11 @@ int main()
     }
     vector<int> res = pge(v);
     for(int i=0; i<res.size(); i++){
-        cout<<(i-res[i])<<" ";
+        cout<<(i -res[i])<<" "; // The final output, (i - res[i]), computes the distance to the Previous Greater Element correctly.
     }
     return 0;
 }
 
 // 100 80 60 70 60 75 85
+// 100 80 60 70 60 75 85
+// -1 0 1 1 3 1 0
