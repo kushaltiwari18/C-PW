@@ -6,3 +6,4 @@ build/
 *.json
 *.DS_Store
 *.txt
+*.dSYM
