@@ -14,7 +14,6 @@ int main(){
     vector<int> ans(arr.size(), 0);
 
     for(int i=0; i<arr.size(); i++){
-        // 
 
         while(!s.empty() && s.top() >= arr[i]){
             s.pop();
@@ -28,7 +27,7 @@ int main(){
 
         s.push(arr[i]);
     }
-
+    
     for(int val : arr){
         cout << val << " ";
     }cout << endl;

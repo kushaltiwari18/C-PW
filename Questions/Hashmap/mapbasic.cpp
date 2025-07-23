@@ -36,7 +36,7 @@ int main()
     cout << "Size : "<<m.size() << endl;
 
     // max size
-    cout << "Space allocated in memory :"<<m.max_size() << endl;
+    // cout << "Space allocated in memory :"<<m.max_size() << endl;
 
     // erase
     m.erase(3);
@@ -66,7 +66,7 @@ int main()
     cout<<"Lower bound : "<<m.lower_bound(2)->first<<endl;
 
     // clear
-    m.clear();
+    // m.clear();
 
     map<int, string>::iterator it;
     for (it = m.begin(); it != m.end(); it++)

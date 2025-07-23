@@ -7,3 +7,5 @@ build/
 *.DS_Store
 *.txt
 *.dSYM
+.DS_Store
+.DS_Store
