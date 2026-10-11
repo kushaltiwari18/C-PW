@@ -68,6 +68,47 @@ Node* insertBST(Node* root, int val){
     return root;
 }
 
+Node* largestNodeBST(Node* root){
+    Node* curr = root;
+    while(curr && curr->right != NULL){
+        curr = curr->right;
+    }
+    return curr;
+}
+
+Node* deleteBST(Node* root, int key){
+
+    if(root == NULL) return root;
+    
+    if(root->value < key){
+        root->right = deleteBST(root->right, key);
+    }
+    else if(root->value > key){
+        root->left = deleteBST(root->left, key);
+    }
+    else{
+        // root is the node to be deleted
+        if(root->left == NULL && root->right == NULL){
+            // node has 0 child node
+            free(root);
+            return NULL;
+        }
+        // node has 1 child node
+        else if(root->left == NULL){
+            Node* temp = root->right;
+            free(root);
+            return temp;
+        }
+        // node has 2 child nodes
+        else{
+        Node* justSmallerNode = largestNodeBST(root->left);
+        root->value = justSmallerNode->value;
+        root->left = deleteBST(root->left, justSmallerNode->value);
+        }
+    }
+    return root;
+};
+
 void inorderTraversal(Node* root){
     if(root == NULL) return;
 
@@ -82,10 +123,17 @@ int main(){
     // insertBST(bst1.root,3);
     // insertBST(bst1.root, 1);
     // insertBST(bst1.root, 4);
+    // insertBST(bst1.root, 6);
+    // insertBST(bst1.root, 2);
 
     bst1.root = insertBST(bst1.root,3);
-    bst1.root =  insertBST(bst1.root, 1);
-    bst1.root =  insertBST(bst1.root, 4);
+    insertBST(bst1.root, 1);
+    insertBST(bst1.root, 4);
+    insertBST(bst1.root, 6);
+    insertBST(bst1.root, 2);
+    inorderTraversal(bst1.root);
+    cout<<endl;
+    deleteBST(bst1.root, 4);
     inorderTraversal(bst1.root);
     return 0;
 }
